@@ -37,6 +37,9 @@ namespace XenonAquaEngine
                 Console.Write(".");
                 Debug.Log.WriteAsThread("Logging started");
                 Console.Write(".");
+                Debug.Log.WriteAsThread($"ProcessorID: {System.Threading.Thread.GetCurrentProcessorId()}");
+                Console.Write(".");
+                
                 ReadSpeed = ToReadSpeed;
             }
         }
@@ -86,6 +89,29 @@ namespace XenonAquaEngine
                     LogStringBuilder.AppendLine(ParsedWrite);
                     File.AppendAllText(logFile, LogStringBuilder.ToString());
                     LogStringBuilder.Clear();
+                }
+            }
+        }
+        public class Screen
+        {
+            /// <summary>
+            /// write the text and delay by the read speed
+            /// </summary>
+            /// <param name="textin">the text to write</param>
+            public static void Write(string textin)
+            {
+                Console.WriteLine(textin);
+                System.Threading.Thread.Sleep(ReadSpeed);
+            }
+            /// <summary>
+            /// prints as many lines as the window is tall and then one
+            /// </summary>
+            public static void Clearscreeen()
+            {
+                int ConsoleHeight = Console.WindowHeight + 1;
+                for (int i = 0; i < ConsoleHeight; i++)
+                {
+                    Console.WriteLine();
                 }
             }
         }
