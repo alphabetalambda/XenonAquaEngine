@@ -1,0 +1,15 @@
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\obj\Debug\net6.0\XenonAquaEngine.csproj.AssemblyReference.cache
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\obj\Debug\net6.0\XenonAquaEngine.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\obj\Debug\net6.0\XenonAquaEngine.AssemblyInfoInputs.cache
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\obj\Debug\net6.0\XenonAquaEngine.AssemblyInfo.cs
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\obj\Debug\net6.0\XenonAquaEngine.csproj.CoreCompileInputs.cache
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\bin\Debug\net6.0\XenonAquaEngine.exe
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\bin\Debug\net6.0\XenonAquaEngine.deps.json
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\bin\Debug\net6.0\XenonAquaEngine.runtimeconfig.json
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\bin\Debug\net6.0\XenonAquaEngine.dll
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\bin\Debug\net6.0\XenonAquaEngine.pdb
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\obj\Debug\net6.0\XenonAquaEngine.dll
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\obj\Debug\net6.0\refint\XenonAquaEngine.dll
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\obj\Debug\net6.0\XenonAquaEngine.pdb
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\obj\Debug\net6.0\XenonAquaEngine.genruntimeconfig.cache
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\obj\Debug\net6.0\ref\XenonAquaEngine.dll
