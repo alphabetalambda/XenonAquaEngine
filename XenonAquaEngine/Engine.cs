@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace XenonAquaEngine
 {
@@ -55,6 +56,19 @@ namespace XenonAquaEngine
             }
             public static class Log
             {
+                public static void Debugmenu()
+                {
+                    string PROCESSORIDENTIFIER = Environment.GetEnvironmentVariable("PROCESSOR_IDENTIFIER");
+                    string OS = System.Environment.GetEnvironmentVariable("OS");
+                    string PROCESSORARCHITECTURE = System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
+                    Console.Write("PROCESSOR_IDENTIFIER: ");
+                    Console.WriteLine(PROCESSORIDENTIFIER);
+                    Console.Write("OS: ");
+                    Console.WriteLine(OS);
+                    Console.Write("PROCESSOR_ARCHITECTURE: ");
+                    Console.WriteLine(PROCESSORARCHITECTURE);
+                    Console.WriteLine(System.Threading.Thread.CurrentThread.Name);
+                }
                 public static StringBuilder LogStringBuilder;
                 public static void Start()
                 {
