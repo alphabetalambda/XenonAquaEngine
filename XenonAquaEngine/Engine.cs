@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using Microsoft.VisualBasic;
 
 namespace XenonAquaEngine
 {
@@ -13,6 +14,23 @@ namespace XenonAquaEngine
         public static readonly string[] EngineName = { @"___  _ _____ _      ____  _      ____  ____  _     ____ ", @"\  \///  __// \  /|/  _ \/ \  /|/  _ \/  _ \/ \ /\/  _ \", @" \  / |  \  | |\ ||| / \|| |\ ||| / \|| / \|| | ||| / \|", @" /  \ |  /_ | | \||| \_/|| | \||| |-||| \_\|| \_/|| |-||", @"/__/\\\____\\_/  \|\____/\_/  \|\_/ \|\____\\____/\_/ \|" };
         public static readonly string logFile = @"./log.log";
         public static int ReadSpeed;
+        public static Random Rand = new Random();
+        public static char RandomChar()
+        {
+            return (char)Rand.Next('a', 'z');
+        }
+        public static char RandomCaseChar()
+        {
+            int CapsInt = Rand.Next(1, 2);
+            char charater = RandomChar();
+            if (CapsInt == 1)
+            {
+                charater = char.ToUpper(charater);
+                return (charater);
+            }
+            return (charater);
+
+        }
         public class SDKs
         {
 
@@ -92,8 +110,66 @@ namespace XenonAquaEngine
                 }
             }
         }
+        public class UserInput
+        {
+            public static int Int32Input(int limitlow, int limithigh)
+            {
+                Console.WriteLine("Please enter a number:");
+                string input;
+                input = Console.ReadLine();
+                bool canparse;
+                int number;
+                canparse = int.TryParse(input, out int num);
+                int limithighp = limithigh + 1;
+                int limitlowp = limitlow + 1;
+                if (canparse == true)
+                {
+                    number = int.Parse(input);
+                    if (number < limitlowp - 1)
+                    {
+                        canparse = false;
+                    }
+                    if (number > limithighp + 1)
+                    {
+                        canparse = false;
+                    }
+                }
+                while (canparse == false)
+                {
+                    Console.WriteLine("Please enter a valid number:");
+                    input = Console.ReadLine();
+                    canparse = int.TryParse(input, out num);
+                    if (canparse == true)
+                    {
+                        number = int.Parse(input);
+                        if (number < limitlowp)
+                        {
+                            canparse = false;
+                        }
+                        if (number > limithighp)
+                        {
+                            canparse = false;
+                        }
+                    }
+                }
+                number = int.Parse(input);
+                return number;
+            }
+        }
         public class Screen
         {
+            public static void FillScreen()
+            {
+                int CHeight = Console.WindowHeight;
+                int CWidth = Console.WindowWidth;
+                for (int Height = 0; Height<CHeight; Height++)
+                {
+                    for (int Width=0; Width<CWidth; Width++)
+                    {
+                        Console.Write(RandomCaseChar());
+                    }
+                }
+            }
             /// <summary>
             /// write the text and delay by the read speed
             /// </summary>
