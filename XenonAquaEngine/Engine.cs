@@ -10,26 +10,38 @@ namespace XenonAquaEngine
 {
     public class Engine
     {
-        public static readonly string EngineVersion = "A1.1.0";
+        public static readonly string EngineVersion = "A1.2.0";
         public static readonly string[] EngineName = { @"___  _ _____ _      ____  _      ____  ____  _     ____ ", @"\  \///  __// \  /|/  _ \/ \  /|/  _ \/  _ \/ \ /\/  _ \", @" \  / |  \  | |\ ||| / \|| |\ ||| / \|| / \|| | ||| / \|", @" /  \ |  /_ | | \||| \_/|| | \||| |-||| \_\|| \_/|| |-||", @"/__/\\\____\\_/  \|\____/\_/  \|\_/ \|\____\\____/\_/ \|" };
         public static readonly string logFile = @"./log.log";
         public static int ReadSpeed;
-        public static Random Rand = new Random();
-        public static char RandomChar()
+        public class RandomClass
         {
-            return (char)Rand.Next('a', 'z');
-        }
-        public static char RandomCaseChar()
-        {
-            int CapsInt = Rand.Next(1, 2);
-            char charater = RandomChar();
-            if (CapsInt == 1)
+            public static Random Rand = new Random();
+            /// <summary>
+            /// Generates a random A to Z char
+            /// </summary>
+            /// <returns>a random A to Z char</returns>
+            public static char RandomChar()
             {
-                charater = char.ToUpper(charater);
-                return (charater);
+                return (char)Rand.Next('a', 'z');
             }
-            return (charater);
+            /// <summary>
+            /// Generates a random A to Z char with a random case
+            /// </summary>
+            /// <returns>A random A to Z char with a random case</returns>
+            public static char RandomCaseChar()
+            {
+                //Why it needs to be 2 and not 1 is beyond me
+                int CapsInt = Rand.Next(0, 2);
+                char charater = RandomChar();
+                if (CapsInt == 1)
+                {
+                    charater = char.ToUpper(charater);
+                    return (charater);
+                }
+                return (charater);
 
+            }
         }
         public class SDKs
         {
@@ -158,15 +170,19 @@ namespace XenonAquaEngine
         }
         public class Screen
         {
+            /// <summary>
+            /// fills the screen with random upper and lowercase letters
+            /// </summary>
             public static void FillScreen()
             {
+                Console.WriteLine();
                 int CHeight = Console.WindowHeight;
                 int CWidth = Console.WindowWidth;
                 for (int Height = 0; Height<CHeight; Height++)
                 {
                     for (int Width=0; Width<CWidth; Width++)
                     {
-                        Console.Write(RandomCaseChar());
+                        Console.Write(Engine.RandomClass.RandomCaseChar());
                     }
                 }
             }
