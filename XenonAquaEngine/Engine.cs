@@ -85,6 +85,7 @@ namespace XenonAquaEngine
                     Console.WriteLine(item);
                     System.Threading.Thread.Sleep(5);
                 }
+                Console.WriteLine($"Engine Version: {Engine.EngineVersion}");
                 System.Threading.Thread.Sleep(3000);
                 Console.Write("loading");
                 Debug.Log.Start();
