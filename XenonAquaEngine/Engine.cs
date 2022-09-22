@@ -17,6 +17,17 @@ namespace XenonAquaEngine
         public class RandomClass
         {
             public static Random Rand = new Random();
+            public static bool Randombool()
+            {
+                if (Rand.Next(0, 2) == 1)
+                {
+                    return (true);
+                }
+                else
+                {
+                    return (false);
+                }
+            }
             /// <summary>
             /// Generates a random A to Z char
             /// </summary>
@@ -31,16 +42,29 @@ namespace XenonAquaEngine
             /// <returns>A random A to Z char with a random case</returns>
             public static char RandomCaseChar()
             {
-                //Why it needs to be 2 and not 1 is beyond me
-                int CapsInt = Rand.Next(0, 2);
                 char charater = RandomChar();
-                if (CapsInt == 1)
+                if (Randombool())
                 {
                     charater = char.ToUpper(charater);
                     return (charater);
                 }
                 return (charater);
-
+            }
+            public static string CaseRandomizer(char[] stringin)
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (var charin in stringin)
+                {
+                    if (Randombool())
+                    {
+                        sb.Append(char.ToUpper(charin));
+                    }
+                    else
+                    {
+                        sb.Append(charin);
+                    }
+                }
+                return sb.ToString();
             }
         }
         public class SDKs
@@ -69,6 +93,7 @@ namespace XenonAquaEngine
                 Console.Write(".");
                 Debug.Log.WriteAsThread($"ProcessorID: {System.Threading.Thread.GetCurrentProcessorId()}");
                 Console.Write(".");
+                Console.WriteLine();
                 
                 ReadSpeed = ToReadSpeed;
             }
