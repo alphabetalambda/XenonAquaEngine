@@ -224,7 +224,8 @@ namespace XenonAquaEngine
                 {
                     throw new ArgumentException($"'{nameof(textin)}' cannot be null or whitespace.", nameof(textin));
                 }
-                Console.WriteLine(textin)
+                Console.WriteLine(textin);
+                System.Threading.Thread.Sleep(writespeed);
             }
             /// <summary>
             /// write the text and delay by the read speed
