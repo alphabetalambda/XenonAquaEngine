@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
-using Microsoft.VisualBasic;
 
 namespace XenonAquaEngine
 {
@@ -150,6 +149,17 @@ namespace XenonAquaEngine
         }
         public class UserInput
         {
+            //public static bool BoolYNInput()
+            //{
+            //    Console.WriteLine("[Y/N]:");
+            //    string input = null;
+            //    input = Console.ReadLine();
+            //    bool canpare = false;
+            //    if(input = "yes")
+            //    {
+
+            //    }
+            //}
             public static int Int32Input(int limitlow, int limithigh)
             {
                 Console.WriteLine("Please enter a number:");
