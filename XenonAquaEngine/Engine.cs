@@ -213,6 +213,13 @@ namespace XenonAquaEngine
                 }
             }
             /// <summary>
+            /// places a blank line
+            /// </summary>
+            public static void BlankLine()
+            {
+                Console.WriteLine();
+            }
+            /// <summary>
             /// write the text and delay by the defined write speed
             /// </summary>
             /// <param name="textin">the text to write</param>
