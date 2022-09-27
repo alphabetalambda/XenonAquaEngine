@@ -213,11 +213,30 @@ namespace XenonAquaEngine
                 }
             }
             /// <summary>
+            /// write the text and delay by the defined write speed
+            /// </summary>
+            /// <param name="textin">the text to write</param>
+            /// <param name="writespeed">the time to wait after</param>
+            /// <exception cref="ArgumentException"></exception>
+            public static void CustomSpeedWrite(string textin, int writespeed)
+            {
+                if (string.IsNullOrWhiteSpace(textin))
+                {
+                    throw new ArgumentException($"'{nameof(textin)}' cannot be null or whitespace.", nameof(textin));
+                }
+                Console.WriteLine(textin)
+            }
+            /// <summary>
             /// write the text and delay by the read speed
             /// </summary>
             /// <param name="textin">the text to write</param>
             public static void Write(string textin)
             {
+                if (string.IsNullOrWhiteSpace(textin))
+                {
+                    throw new ArgumentException($"'{nameof(textin)}' cannot be null or whitespace.", nameof(textin));
+                }
+
                 Console.WriteLine(textin);
                 System.Threading.Thread.Sleep(ReadSpeed);
             }
