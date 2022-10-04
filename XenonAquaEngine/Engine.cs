@@ -112,21 +112,21 @@ namespace XenonAquaEngine
 
                 }
             }
+            public static void Debugmenu()
+            {
+                string PROCESSORIDENTIFIER = Environment.GetEnvironmentVariable("PROCESSOR_IDENTIFIER");
+                string OS = System.Environment.GetEnvironmentVariable("OS");
+                string PROCESSORARCHITECTURE = System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
+                Console.Write("PROCESSOR_IDENTIFIER: ");
+                Console.WriteLine(PROCESSORIDENTIFIER);
+                Console.Write("OS: ");
+                Console.WriteLine(OS);
+                Console.Write("PROCESSOR_ARCHITECTURE: ");
+                Console.WriteLine(PROCESSORARCHITECTURE);
+                Console.WriteLine(System.Threading.Thread.CurrentThread.Name);
+            }
             public static class Log
             {
-                public static void Debugmenu()
-                {
-                    string PROCESSORIDENTIFIER = Environment.GetEnvironmentVariable("PROCESSOR_IDENTIFIER");
-                    string OS = System.Environment.GetEnvironmentVariable("OS");
-                    string PROCESSORARCHITECTURE = System.Environment.GetEnvironmentVariable("PROCESSOR_ARCHITECTURE");
-                    Console.Write("PROCESSOR_IDENTIFIER: ");
-                    Console.WriteLine(PROCESSORIDENTIFIER);
-                    Console.Write("OS: ");
-                    Console.WriteLine(OS);
-                    Console.Write("PROCESSOR_ARCHITECTURE: ");
-                    Console.WriteLine(PROCESSORARCHITECTURE);
-                    Console.WriteLine(System.Threading.Thread.CurrentThread.Name);
-                }
                 public static StringBuilder LogStringBuilder;
                 public static void Start()
                 {
@@ -320,6 +320,17 @@ namespace XenonAquaEngine
                 for (int i = 0; i < ConsoleHeight; i++)
                 {
                     Console.WriteLine();
+                }
+            }
+            public static void DrawMenu()
+            {
+                if (Engine.Debug.IsDebug)
+                {
+                    Engine.Debug.Debugmenu();
+                }
+                foreach(var line in EngineConfig.GameMenuArt)
+                {
+                    Console.WriteLine(line);
                 }
             }
         }
