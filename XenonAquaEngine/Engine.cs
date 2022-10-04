@@ -149,17 +149,70 @@ namespace XenonAquaEngine
         }
         public class UserInput
         {
-            //public static bool BoolYNInput()
-            //{
-            //    Console.WriteLine("[Y/N]:");
-            //    string input = null;
-            //    input = Console.ReadLine();
-            //    bool canpare = false;
-            //    if(input = "yes")
-            //    {
-
-            //    }
-            //}
+            public static bool BoolYNInput()
+            {
+                Console.WriteLine("[Y/N]:");
+                string input;
+                input = Console.ReadLine();
+                bool canpare = false;
+                input = input.ToLower();
+                //convert answer to something easier to parse
+                if (input == "yes")
+                {
+                    input = "y";
+                }
+                if (input == "no")
+                {
+                    input = "n";
+                }
+                //test if the answer can be parsed
+                switch (input){
+                    case "n":
+                        canpare = true;
+                        break;
+                    case "y":
+                        canpare = true;
+                        break;
+                    default:
+                        canpare = false;
+                        break;
+                }
+                while(canpare == false)
+                {
+                    Console.WriteLine("please enter a valid answer [Y/N]:");
+                    input = Console.ReadLine();
+                    //convert answer to something easier to parse
+                    if (input == "yes")
+                    {
+                        input = "y";
+                    }
+                    if (input == "no")
+                    {
+                        input = "n";
+                    }
+                    //test if the answer can be parsed
+                    switch (input)
+                    {
+                        case "n":
+                            canpare = true;
+                            break;
+                        case "y":
+                            canpare = true;
+                            break;
+                        default:
+                            canpare = false;
+                            break;
+                    }
+                }
+                if(input == "n")
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
             public static int Int32Input(int limitlow, int limithigh)
             {
                 Console.WriteLine("Please enter a number:");
