@@ -4,6 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using NAudio.Wave;
+using NAudio.CoreAudioApi;
+using NAudio.Codecs;
+using NAudio.FileFormats;
+using NAudio.Midi;
+using NAudio.Mixer;
 
 namespace XenonAquaEngine
 {
@@ -333,6 +339,16 @@ namespace XenonAquaEngine
                     Console.WriteLine(line);
                 }
             }
+        }
+        public class sound
+        {
+            /// <summary>
+            /// name of the song in the sounds directory
+            /// </summary>
+            public static readonly string SoundsFolder = "./Sounds";
+            public static string SongName;
+            public static System.TimeSpan SongLength = new System.TimeSpan(0,0,0);
+            
         }
     }
 }
