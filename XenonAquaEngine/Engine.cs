@@ -10,6 +10,7 @@ using NAudio.Codecs;
 using NAudio.FileFormats;
 using NAudio.Midi;
 using NAudio.Mixer;
+using Microsoft.VisualBasic;
 
 namespace XenonAquaEngine
 {
@@ -91,6 +92,7 @@ namespace XenonAquaEngine
                     System.Threading.Thread.Sleep(5);
                 }
                 Console.WriteLine($"Engine Version: {Engine.EngineVersion}");
+                Console.WriteLine("Audio By Naudio");
                 System.Threading.Thread.Sleep(3000);
                 Console.Write("loading");
                 Debug.Log.Start();
@@ -342,12 +344,13 @@ namespace XenonAquaEngine
         }
         public class sound
         {
+            public static readonly string SoundsFolder = "./Sounds";
             /// <summary>
             /// name of the song in the sounds directory
             /// </summary>
-            public static readonly string SoundsFolder = "./Sounds";
-            public static string SongName;
+            public static string SongName = "";
             public static System.TimeSpan SongLength = new System.TimeSpan(0,0,0);
+            private static WaveOutEvent WaveOutEvent = new WaveOutEvent();
             
         }
     }
