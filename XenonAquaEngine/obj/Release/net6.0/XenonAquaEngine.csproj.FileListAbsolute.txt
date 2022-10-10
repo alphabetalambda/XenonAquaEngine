@@ -13,3 +13,11 @@ C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\Xe
 C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\obj\Release\net6.0\XenonAquaEngine.pdb
 C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\obj\Release\net6.0\XenonAquaEngine.genruntimeconfig.cache
 C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\obj\Release\net6.0\ref\XenonAquaEngine.dll
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\bin\Release\net6.0\Sounds\theme.wav
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\bin\Release\net6.0\NAudio.dll
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\bin\Release\net6.0\NAudio.Asio.dll
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\bin\Release\net6.0\NAudio.Core.dll
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\bin\Release\net6.0\NAudio.Midi.dll
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\bin\Release\net6.0\NAudio.Wasapi.dll
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\bin\Release\net6.0\NAudio.WinMM.dll
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\obj\Release\net6.0\XenonAquaEngine.csproj.CopyComplete

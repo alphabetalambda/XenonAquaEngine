@@ -16,7 +16,7 @@ namespace XenonAquaEngine
 {
     public class Engine
     {
-        public static readonly string EngineVersion = "A1.2.0";
+        public static readonly string EngineVersion = "A1..0";
         public static readonly string[] EngineName = { @"___  _ _____ _      ____  _      ____  ____  _     ____ ", @"\  \///  __// \  /|/  _ \/ \  /|/  _ \/  _ \/ \ /\/  _ \", @" \  / |  \  | |\ ||| / \|| |\ ||| / \|| / \|| | ||| / \|", @" /  \ |  /_ | | \||| \_/|| | \||| |-||| \_\|| \_/|| |-||", @"/__/\\\____\\_/  \|\____/\_/  \|\_/ \|\____\\____/\_/ \|" };
         public static readonly string logFile = @"./log.log";
         public static int ReadSpeed;
@@ -101,9 +101,22 @@ namespace XenonAquaEngine
                 Console.Write(".");
                 Debug.Log.WriteAsThread($"ProcessorID: {System.Threading.Thread.GetCurrentProcessorId()}");
                 Console.Write(".");
+                Engine.Threads.StartMusicThread();
                 Console.WriteLine();
                 
                 ReadSpeed = ToReadSpeed;
+            }
+        }
+        public class Threads
+        {
+            public static void StartMusicThread()
+            {
+                System.Threading.ThreadStart MusicRef = new(Engine.Sound.MusicThread);
+                Console.Write(".");
+                System.Threading.Thread MusicThread = new(MusicRef);
+                Console.Write(".");
+                MusicThread.Start();
+                Console.Write(".");
             }
         }
         public class Debug
@@ -342,16 +355,51 @@ namespace XenonAquaEngine
                 }
             }
         }
-        public class sound
+        public class Sound
         {
-            public static readonly string SoundsFolder = "./Sounds";
+            private static readonly string SoundsFolder = "./Sounds";
             /// <summary>
             /// name of the song in the sounds directory
             /// </summary>
-            public static string SongName = "";
-            public static System.TimeSpan SongLength = new System.TimeSpan(0,0,0);
-            private static WaveOutEvent WaveOutEvent = new WaveOutEvent();
-            
+            public static string SongName = "theme.wav";
+            public static System.TimeSpan SongLength = new System.TimeSpan(0,0,59);
+            private static WaveOutEvent MusicOut = new WaveOutEvent();
+            private static WaveFileReader MusicReader = new WaveFileReader(SoundsFolder + "/" + SongName);
+            public static int MusicIntent = 1;
+            public static void MusicThread()
+            {
+                Thread.CurrentThread.Name = "Music Thread";
+                if (Debug.IsDebug)
+                {
+                    Console.WriteLine("music thread started");
+                    Debug.Log.WriteAsThread("music thread started");
+                }
+                while (true)
+                {
+                    if (MusicReader.CurrentTime == SongLength)
+                    {
+                        MusicIntent = 2;
+                    }
+                    switch (MusicIntent)
+                    {
+                        case 0:
+                            break;
+                        case 1:
+                            MusicOut.Init(MusicReader);
+                            MusicIntent = 0;
+                            MusicOut.Play();
+                            break;
+                        case 2:
+                            MusicReader.Seek(0, 0);
+                            MusicIntent = 0;
+                            break;
+                        case 3:
+                            MusicReader.Skip(100);
+                            MusicIntent = 0;
+                            break;
+                    }
+                }
+            }
         }
     }
 }
