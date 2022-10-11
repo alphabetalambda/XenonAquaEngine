@@ -18,7 +18,7 @@ namespace XenonAquaEngine
     {
         public static readonly string EngineVersion = "A1.4.0";
         public static readonly string[] EngineName = { @"___  _ _____ _      ____  _      ____  ____  _     ____ ", @"\  \///  __// \  /|/  _ \/ \  /|/  _ \/  _ \/ \ /\/  _ \", @" \  / |  \  | |\ ||| / \|| |\ ||| / \|| / \|| | ||| / \|", @" /  \ |  /_ | | \||| \_/|| | \||| |-||| \_\|| \_/|| |-||", @"/__/\\\____\\_/  \|\____/\_/  \|\_/ \|\____\\____/\_/ \|" };
-        public static readonly string logFile = @"./log.log";
+        public static readonly string logFile = $"./{DateTime.Now:MM-dd-yyyy-h-mm-tt}.log";
         public static int ReadSpeed;
         public class RandomClass
         {
@@ -75,7 +75,83 @@ namespace XenonAquaEngine
         }
         public class SDKs
         {
+            public class DiscordSDK
+            {
+                public static void SetStatusDetails(string Details)
+                {
+                    DiscordStatTxt = Details;
+                    statusupdated = true;
+                }
+                volatile static string DiscordStatTxt;
+                static bool statusupdated = true;
+                public static void Discordthread()
+                {
+                    System.Threading.Thread.CurrentThread.Name = "Discord Thread";
+                    Debug.Log.WriteAsThread("Discord Thread started");
+                    // Use your client ID from Discord's developer site. not mine
+                    string clientID = null;
+                    if (clientID == null)
+                    {
+                        clientID = "1029444768998105169";
+                    }
+                    var discordapi = new Discord.Discord(Int64.Parse(clientID), (UInt64)Discord.CreateFlags.Default);
+                    var activitymanager = discordapi.GetActivityManager();
+                    if (DiscordStatTxt == null)
+                    {
+                        DiscordStatTxt = "playing " + EngineConfig.GameName;
+                    }
+                    var activity = new Discord.Activity
+                    {
+                        Details = DiscordStatTxt,
+                        Assets =
+                        {
+                            LargeText = EngineConfig.GameName,
+                        }
+                    };
+                    activitymanager.UpdateActivity(activity, (res) =>
+                    {
+                        if (Engine.Debug.IsDebug == true)
+                        {
 
+                        }
+                    });
+
+                    //Sar_engine.Engine.DiscordSDK.TimeOn.Start();
+                    while (1 == 1)
+                    {
+                        if (statusupdated == true)
+                        {
+                            //TimeSpan TimeOnSpan = Sar_engine.Engine.DiscordSDK.TimeOn.Elapsed;
+                            //Int64 TimeOnInt = Convert.ToInt64(TimeOnSpan.TotalSeconds);
+                            var activitynew = new Discord.Activity
+                            {
+                                //Timestamps =
+                                //{
+                                //    Start = TimeOnInt
+                                //},
+                                Details = DiscordStatTxt,
+                                Assets =
+                        {
+                            LargeImage = "main-icon",
+                            LargeText = "Saris Unbounded",
+                        }
+                            };
+                            activitymanager.UpdateActivity(activitynew, (res) =>
+                            {
+                                if (Engine.Debug.IsDebug == true)
+                                {
+
+                                }
+                            });
+                            statusupdated = false;
+                        }
+                        discordapi.RunCallbacks();
+                        Debug.Log.WriteAsThread("Updated status");
+                        System.Threading.Thread.Sleep(4000);
+                    }
+
+                }
+            }
         }
         public class StartupAndShutdown
         {
@@ -124,6 +200,15 @@ namespace XenonAquaEngine
                 System.Threading.Thread MusicThread = new(MusicRef);
                 Console.Write(".");
                 MusicThread.Start();
+                Console.Write(".");
+            }
+            public static void StartDiscordThread()
+            {
+                System.Threading.ThreadStart DiscordRef = new(Engine.SDKs.DiscordSDK.Discordthread);
+                Console.Write(".");
+                System.Threading.Thread DiscordThread = new(DiscordRef);
+                Console.WriteLine(".");
+                DiscordThread.Start();
                 Console.Write(".");
             }
         }

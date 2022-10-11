@@ -16,5 +16,6 @@ namespace XenonAquaEngine
         /// the game's menu art. should be formated as {line1, line2, line3 etc.}
         /// </summary>
         public static string[] GameMenuArt = { };
+        public static string GameName = "XenonAquaEngine";
     }
 }
