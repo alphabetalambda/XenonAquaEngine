@@ -4,8 +4,9 @@
     {
         static void Main(string[] args)
         {
-            Engine.StartUp.Start(2000);
-            Console.WriteLine("lol");
+            Engine.StartupAndShutdown.Start(2000);
+            System.Threading.Thread.Sleep(10000);
+            Engine.StartupAndShutdown.Stop();
         }
     }
 }

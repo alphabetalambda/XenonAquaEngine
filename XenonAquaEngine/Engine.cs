@@ -16,7 +16,7 @@ namespace XenonAquaEngine
 {
     public class Engine
     {
-        public static readonly string EngineVersion = "A1.3.0";
+        public static readonly string EngineVersion = "A1.4.0";
         public static readonly string[] EngineName = { @"___  _ _____ _      ____  _      ____  ____  _     ____ ", @"\  \///  __// \  /|/  _ \/ \  /|/  _ \/  _ \/ \ /\/  _ \", @" \  / |  \  | |\ ||| / \|| |\ ||| / \|| / \|| | ||| / \|", @" /  \ |  /_ | | \||| \_/|| | \||| |-||| \_\|| \_/|| |-||", @"/__/\\\____\\_/  \|\____/\_/  \|\_/ \|\____\\____/\_/ \|" };
         public static readonly string logFile = @"./log.log";
         public static int ReadSpeed;
@@ -77,10 +77,10 @@ namespace XenonAquaEngine
         {
 
         }
-        public class StartUp
+        public class StartupAndShutdown
         {
             /// <summary>
-            /// the start function that needs to be ran to properly initalize the engine
+            /// the start method that needs to be ran to properly initalize the engine
             /// </summary>
             /// <param name="ToReadSpeed">The speed that dialoge lines will be writen at</param>
             static public void Start(int ToReadSpeed)
@@ -103,8 +103,16 @@ namespace XenonAquaEngine
                 Console.Write(".");
                 Engine.Threads.StartMusicThread();
                 Console.WriteLine();
-                
+
                 ReadSpeed = ToReadSpeed;
+            }
+            /// <summary>
+            /// the method to shut down the engine and allow the game to close
+            /// </summary>
+            public static void Stop()
+            {
+                Engine.Sound.MusicIntent = 4;
+
             }
         }
         public class Threads
@@ -366,6 +374,7 @@ namespace XenonAquaEngine
             private static WaveOutEvent MusicOut = new WaveOutEvent();
             private static WaveFileReader MusicReader = new WaveFileReader(SoundsFolder + "/" + SongName);
             public static int MusicIntent = 1;
+            private static bool RunThread = true;
             public static void MusicThread()
             {
                 Thread.CurrentThread.Name = "Music Thread";
@@ -397,6 +406,18 @@ namespace XenonAquaEngine
                             MusicReader.Skip(100);
                             MusicIntent = 0;
                             break;
+                        case 4:
+                            RunThread = false;
+                            break;
+                    }
+                    if(RunThread == false)
+                    {
+                        if (Debug.IsDebug)
+                        {
+                            Console.WriteLine("Music thread Stopping");
+                        }
+                        Debug.Log.WriteAsThread("Music Thread Exiting");
+                        break;
                     }
                 }
             }
