@@ -86,6 +86,10 @@ namespace XenonAquaEngine
                 static bool statusupdated = true;
                 public static void Discordthread()
                 {
+                    if (Debug.IsDebug)
+                    {
+                        Console.WriteLine("Discord thread started");
+                    }
                     System.Threading.Thread.CurrentThread.Name = "Discord Thread";
                     Debug.Log.WriteAsThread("Discord Thread started");
                     // Use your client ID from Discord's developer site. not mine
@@ -115,20 +119,12 @@ namespace XenonAquaEngine
 
                         }
                     });
-
-                    //Sar_engine.Engine.DiscordSDK.TimeOn.Start();
                     while (1 == 1)
                     {
                         if (statusupdated == true)
                         {
-                            //TimeSpan TimeOnSpan = Sar_engine.Engine.DiscordSDK.TimeOn.Elapsed;
-                            //Int64 TimeOnInt = Convert.ToInt64(TimeOnSpan.TotalSeconds);
                             var activitynew = new Discord.Activity
                             {
-                                //Timestamps =
-                                //{
-                                //    Start = TimeOnInt
-                                //},
                                 Details = DiscordStatTxt,
                                 Assets =
                                 {

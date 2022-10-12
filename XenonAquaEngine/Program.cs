@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             Engine.StartupAndShutdown.Start(2000);
-
+            System.Threading.Thread.Sleep(2000);
         }
     }
 }
