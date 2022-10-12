@@ -17,6 +17,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="discord_game_sdk.bundle">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="discord_game_sdk.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="discord_game_sdk.dll.lib">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="discord_game_sdk.dylib">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="discord_game_sdk.so">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Sounds\theme.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -21,3 +21,8 @@ C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\Xe
 C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\obj\x64\Release\net6.0\XenonAquaEngine.pdb
 C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\obj\x64\Release\net6.0\XenonAquaEngine.genruntimeconfig.cache
 C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\obj\x64\Release\net6.0\ref\XenonAquaEngine.dll
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\bin\x64\Release\net6.0\discord_game_sdk.bundle
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\bin\x64\Release\net6.0\discord_game_sdk.dll
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\bin\x64\Release\net6.0\discord_game_sdk.dll.lib
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\bin\x64\Release\net6.0\discord_game_sdk.dylib
+C:\Users\LodoreS.STIFFLERINTERNE\source\repos\alphabetalambda\XenonAquaEngine\XenonAquaEngine\bin\x64\Release\net6.0\discord_game_sdk.so

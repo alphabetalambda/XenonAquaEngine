@@ -131,10 +131,10 @@ namespace XenonAquaEngine
                                 //},
                                 Details = DiscordStatTxt,
                                 Assets =
-                        {
-                            LargeImage = "main-icon",
-                            LargeText = "Saris Unbounded",
-                        }
+                                {
+                            
+                                    LargeText = "Saris Unbounded",
+                                }
                             };
                             activitymanager.UpdateActivity(activitynew, (res) =>
                             {
@@ -178,6 +178,7 @@ namespace XenonAquaEngine
                 Debug.Log.WriteAsThread($"ProcessorID: {System.Threading.Thread.GetCurrentProcessorId()}");
                 Console.Write(".");
                 Engine.Threads.StartMusicThread();
+                Engine.Threads.StartDiscordThread();
                 Console.WriteLine();
 
                 ReadSpeed = ToReadSpeed;
@@ -207,7 +208,7 @@ namespace XenonAquaEngine
                 System.Threading.ThreadStart DiscordRef = new(Engine.SDKs.DiscordSDK.Discordthread);
                 Console.Write(".");
                 System.Threading.Thread DiscordThread = new(DiscordRef);
-                Console.WriteLine(".");
+                Console.Write(".");
                 DiscordThread.Start();
                 Console.Write(".");
             }
