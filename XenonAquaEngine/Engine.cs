@@ -176,6 +176,8 @@ namespace XenonAquaEngine
                 Console.Write(".");
                 Engine.Threads.StartMusicThread();
                 Engine.Threads.StartDiscordThread();
+                Engine.SaveSystem.Load();
+                Console.WriteLine(".");
                 Console.WriteLine();
 
                 ReadSpeed = ToReadSpeed;
@@ -522,6 +524,34 @@ namespace XenonAquaEngine
                 catch (System.IO.IOException)
                 {
                     System.Console.WriteLine("I/O error: Failed to save file");
+                }
+            }
+            static public void Load()
+            {
+                bool exsistingsave = File.Exists(SaveFile);
+                //haha now andrew cant bully me for haveing no catch here
+                switch (exsistingsave)
+                {
+                    case true:
+                        _ = File.ReadAllLines(SaveFile);
+                        StreamReader readingFile = new(SaveFile);
+                        State = readingFile.ReadLine();
+                        string readspeedstring = readingFile.ReadLine();
+                        try
+                        {
+                            ReadSpeed = Int32.Parse(readspeedstring);
+                        }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("unable to Parse");
+                        }
+                        Console.WriteLine("Welcome back to Saris Unbounded");
+                        readingFile.Close();
+                        break;
+                    case false:
+                        State = "00000";
+                        Save();
+                        break;
                 }
             }
         }
