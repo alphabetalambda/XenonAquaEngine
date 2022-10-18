@@ -10,7 +10,6 @@ using NAudio.Codecs;
 using NAudio.FileFormats;
 using NAudio.Midi;
 using NAudio.Mixer;
-using Microsoft.VisualBasic;
 
 namespace XenonAquaEngine
 {
@@ -18,8 +17,10 @@ namespace XenonAquaEngine
     {
         public static readonly string EngineVersion = "A1.4.0";
         public static readonly string[] EngineName = { @"___  _ _____ _      ____  _      ____  ____  _     ____ ", @"\  \///  __// \  /|/  _ \/ \  /|/  _ \/  _ \/ \ /\/  _ \", @" \  / |  \  | |\ ||| / \|| |\ ||| / \|| / \|| | ||| / \|", @" /  \ |  /_ | | \||| \_/|| | \||| |-||| \_\|| \_/|| |-||", @"/__/\\\____\\_/  \|\____/\_/  \|\_/ \|\____\\____/\_/ \|" };
-        public static readonly string logFile = $"./{DateTime.Now:MM-dd-yyyy-h-mm-tt}.log";
+        public static readonly string LogFile = $"./{DateTime.Now:MM-dd-yyyy-h-mm-tt}.log";
         public static int ReadSpeed;
+        public static readonly string SaveFile = "./save.sav";
+        public static string State = "00000";
         public class RandomClass
         {
             public static Random Rand = new Random();
@@ -253,7 +254,7 @@ namespace XenonAquaEngine
                     string ThreadName = System.Threading.Thread.CurrentThread.Name;
                     ParsedWrite = $"[{DateTime.Now:MM-dd-yyyy-h-mm-tt}][{ThreadName}] {ToWrite}";
                     LogStringBuilder.AppendLine(ParsedWrite);
-                    File.AppendAllText(logFile, LogStringBuilder.ToString());
+                    File.AppendAllText(LogFile, LogStringBuilder.ToString());
                     LogStringBuilder.Clear();
                 }
             }
@@ -501,6 +502,26 @@ namespace XenonAquaEngine
                         Debug.Log.WriteAsThread("Music Thread Exiting");
                         break;
                     }
+                }
+            }
+        }
+        public class SaveSystem
+        {
+            public static void Save()
+            {
+                try
+                {
+                    string SaveReadSpeed = ReadSpeed.ToString();
+                    string[] lines =
+                    {
+                        Engine.State,
+                        SaveReadSpeed
+                    };
+                    File.WriteAllLines(SaveFile, lines);
+                }
+                catch (System.IO.IOException)
+                {
+                    System.Console.WriteLine("I/O error: Failed to save file");
                 }
             }
         }
