@@ -21,6 +21,7 @@ namespace XenonAquaEngine
         public static int ReadSpeed;
         public static readonly string SaveFile = "./save.sav";
         public static string State = "00000";
+        public static bool ExitGame = false;
         public class RandomClass
         {
             public static Random Rand = new Random();
@@ -153,7 +154,7 @@ namespace XenonAquaEngine
         public class StartupAndShutdown
         {
             /// <summary>
-            /// the start method that needs to be ran to properly initalize the engine
+            /// the start method that needs to be run to properly initalize the engine
             /// </summary>
             /// <param name="ToReadSpeed">The speed that dialoge lines will be writen at</param>
             static public void Start(int ToReadSpeed)
@@ -374,6 +375,54 @@ namespace XenonAquaEngine
         public class Screen
         {
             /// <summary>
+            /// Prints every string in InArray on a seperate line
+            /// </summary>
+            /// <param name="InArray">The Array to print</param>
+            public static void PrintStringArrayLine(String[] InArray)
+            {
+                foreach (String str in InArray)
+                {
+                    Console.WriteLine(str);
+                }
+            }
+            /// <summary>
+            /// Prints every string in InArray
+            /// </summary>
+            /// <param name="InArray">The Array to print</param>
+            public static void PrintStringArray(String[] InArray)
+            {
+                foreach (String str in InArray)
+                {
+                    Console.Write(str);
+                    Console.Write(' ');
+                }
+                Console.WriteLine();
+            }
+            /// <summary>
+            /// Print every int as a string in InArray seperate line
+            /// </summary>
+            /// <param name="InArray">The array to print</param>
+            public static void PrintIntArrayLine(int[] InArray)
+            {
+                foreach(int i in InArray)
+                {
+                    Console.WriteLine(i.ToString());
+                }
+            }
+            /// <summary>
+            /// Print every int as a string in InArray
+            /// </summary>
+            /// <param name="InArray">The array to print</param>
+            public static void PrintIntArray(int[] InArray)
+            {
+                foreach (int i in InArray)
+                {
+                    Console.Write(i.ToString());
+                    Console.Write(' ');
+                }
+                Console.WriteLine();
+            }
+            /// <summary>
             /// fills the screen with random upper and lowercase letters
             /// </summary>
             public static void FillScreen()
@@ -545,7 +594,6 @@ namespace XenonAquaEngine
                         {
                             Console.WriteLine("unable to Parse");
                         }
-                        Console.WriteLine("Welcome back to Saris Unbounded");
                         readingFile.Close();
                         break;
                     case false:
