@@ -267,7 +267,7 @@ namespace XenonAquaEngine
             /// <summary>
             /// Get a bool value form Y or yes or N or no
             /// </summary>
-            /// <returns></returns>
+            /// <returns>A bool value</returns>
             public static bool BoolYNInput()
             {
                 Console.WriteLine("[Y/N]:");
@@ -333,6 +333,76 @@ namespace XenonAquaEngine
                 }
             }
             /// <summary>
+            /// Get a bool value from Y or yes or N or no
+            /// </summary>
+            /// <param name="WriteText">The Prompt</param>
+            /// <returns>A bool value</returns>
+            public static bool BoolYNInput(string WriteText)
+            {
+                Console.WriteLine(WriteText+":");
+                string input;
+                input = Console.ReadLine();
+                bool canpare = false;
+                input = input.ToLower();
+                //convert answer to something easier to parse
+                if (input == "yes")
+                {
+                    input = "y";
+                }
+                if (input == "no")
+                {
+                    input = "n";
+                }
+                //test if the answer can be parsed
+                switch (input)
+                {
+                    case "n":
+                        canpare = true;
+                        break;
+                    case "y":
+                        canpare = true;
+                        break;
+                    default:
+                        canpare = false;
+                        break;
+                }
+                while (canpare == false)
+                {
+                    Console.WriteLine("please enter a valid answer [Y/N]:");
+                    input = Console.ReadLine();
+                    //convert answer to something easier to parse
+                    if (input == "yes")
+                    {
+                        input = "y";
+                    }
+                    if (input == "no")
+                    {
+                        input = "n";
+                    }
+                    //test if the answer can be parsed
+                    switch (input)
+                    {
+                        case "n":
+                            canpare = true;
+                            break;
+                        case "y":
+                            canpare = true;
+                            break;
+                        default:
+                            canpare = false;
+                            break;
+                    }
+                }
+                if (input == "n")
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            /// <summary>
             /// takes 2 limits and gets the user to return a valid 32 bit number
             /// </summary>
             /// <param name="limitlow">lower limit</param>
@@ -341,6 +411,56 @@ namespace XenonAquaEngine
             public static int Int32Input(int limitlow, int limithigh)
             {
                 Console.WriteLine("Please enter a number:");
+                string input;
+                input = Console.ReadLine();
+                bool canparse;
+                int number;
+                canparse = int.TryParse(input, out int num);
+                int limithighp = limithigh + 1;
+                int limitlowp = limitlow + 1;
+                if (canparse == true)
+                {
+                    number = int.Parse(input);
+                    if (number < limitlowp - 1)
+                    {
+                        canparse = false;
+                    }
+                    if (number > limithighp + 1)
+                    {
+                        canparse = false;
+                    }
+                }
+                while (canparse == false)
+                {
+                    Console.WriteLine("Please enter a valid number:");
+                    input = Console.ReadLine();
+                    canparse = int.TryParse(input, out num);
+                    if (canparse == true)
+                    {
+                        number = int.Parse(input);
+                        if (number < limitlowp)
+                        {
+                            canparse = false;
+                        }
+                        if (number > limithighp)
+                        {
+                            canparse = false;
+                        }
+                    }
+                }
+                number = int.Parse(input);
+                return number;
+            }
+            /// <summary>
+            /// takes 2 limits and gets the user to return a valid 32 bit number
+            /// </summary>
+            /// <param name="limitlow">Lower limit</param>
+            /// <param name="limithigh">Upeer limit</param>
+            /// <param name="WriteText">The prompt</param>
+            /// <returns></returns>
+            public static int Int32Input(int limitlow, int limithigh, string WriteText)
+            {
+                Console.WriteLine(WriteText+":");
                 string input;
                 input = Console.ReadLine();
                 bool canparse;
