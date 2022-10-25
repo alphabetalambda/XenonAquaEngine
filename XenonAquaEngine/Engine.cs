@@ -407,7 +407,7 @@ namespace XenonAquaEngine
             /// </summary>
             /// <param name="limitlow">lower limit</param>
             /// <param name="limithigh">upper limit</param>
-            /// <returns></returns>
+            /// <returns>An int</returns>
             public static int Int32Input(int limitlow, int limithigh)
             {
                 Console.WriteLine("Please enter a number:");
@@ -457,7 +457,7 @@ namespace XenonAquaEngine
             /// <param name="limitlow">Lower limit</param>
             /// <param name="limithigh">Upeer limit</param>
             /// <param name="WriteText">The prompt</param>
-            /// <returns></returns>
+            /// <returns>A int</returns>
             public static int Int32Input(int limitlow, int limithigh, string WriteText)
             {
                 Console.WriteLine(WriteText+":");
@@ -510,6 +510,56 @@ namespace XenonAquaEngine
             public static Int64 Int64Input(Int64 limitlow, Int64 limithigh)
             {
                 Console.WriteLine("Please enter a number:");
+                string input;
+                input = Console.ReadLine();
+                bool canparse;
+                Int64 number;
+                canparse = Int64.TryParse(input, out Int64 num);
+                Int64 limithighp = limithigh + 1;
+                Int64 limitlowp = limitlow + 1;
+                if (canparse == true)
+                {
+                    number = Int64.Parse(input);
+                    if (number < limitlowp - 1)
+                    {
+                        canparse = false;
+                    }
+                    if (number > limithighp + 1)
+                    {
+                        canparse = false;
+                    }
+                }
+                while (canparse == false)
+                {
+                    Console.WriteLine("Please enter a valid number:");
+                    input = Console.ReadLine();
+                    canparse = Int64.TryParse(input, out num);
+                    if (canparse == true)
+                    {
+                        number = int.Parse(input);
+                        if (number < limitlowp)
+                        {
+                            canparse = false;
+                        }
+                        if (number > limithighp)
+                        {
+                            canparse = false;
+                        }
+                    }
+                }
+                number = Int64.Parse(input);
+                return number;
+            }
+            /// <summary>
+            /// takes 2 limits and gets the user to return a valid 64 bit number
+            /// </summary>
+            /// <param name="limitlow">lower limit</param>
+            /// <param name="limithigh">upper limit</param>
+            /// <param name="Writetext">The prompt</param>
+            /// <returns></returns>
+            public static Int64 Int64Input(Int64 limitlow, Int64 limithigh, string Writetext)
+            {
+                Console.WriteLine(Writetext+":");
                 string input;
                 input = Console.ReadLine();
                 bool canparse;
