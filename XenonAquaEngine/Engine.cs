@@ -16,7 +16,7 @@ namespace XenonAquaEngine
     public class Engine
     {
         public static readonly string EngineVersion = "A1.4.0";
-        public static readonly string[] EngineName = { @"___  _ _____ _      ____  _      ____  ____  _     ____ ", @"\  \///  __// \  /|/  _ \/ \  /|/  _ \/  _ \/ \ /\/  _ \", @" \  / |  \  | |\ ||| / \|| |\ ||| / \|| / \|| | ||| / \|", @" /  \ |  /_ | | \||| \_/|| | \||| |-||| \_\|| \_/|| |-||", @"/__/\\\____\\_/  \|\____/\_/  \|\_/ \|\____\\____/\_/ \|" };
+        public static readonly string[] EngineArt = { @"___  _ _____ _      ____  _      ____  ____  _     ____ ", @"\  \///  __// \  /|/  _ \/ \  /|/  _ \/  _ \/ \ /\/  _ \", @" \  / |  \  | |\ ||| / \|| |\ ||| / \|| / \|| | ||| / \|", @" /  \ |  /_ | | \||| \_/|| | \||| |-||| \_\|| \_/|| |-||", @"/__/\\\____\\_/  \|\____/\_/  \|\_/ \|\____\\____/\_/ \|" };
         public static readonly string LogFile = $"./{DateTime.Now:MM-dd-yyyy-h-mm-tt}.log";
         public static int ReadSpeed;
         public static readonly string SaveFile = "./save.sav";
@@ -160,7 +160,7 @@ namespace XenonAquaEngine
             static public void Start(int ToReadSpeed)
             {
                 System.Threading.Thread.CurrentThread.Name = "Main";
-                foreach (var item in EngineName)
+                foreach (var item in EngineArt)
                 {
                     Console.WriteLine(item);
                     System.Threading.Thread.Sleep(5);
@@ -264,6 +264,10 @@ namespace XenonAquaEngine
         }
         public class UserInput
         {
+            /// <summary>
+            /// Get a bool value form Y or yes or N or no
+            /// </summary>
+            /// <returns></returns>
             public static bool BoolYNInput()
             {
                 Console.WriteLine("[Y/N]:");
@@ -328,6 +332,12 @@ namespace XenonAquaEngine
                     return true;
                 }
             }
+            /// <summary>
+            /// takes 2 limits and gets the user to return a valid 32 bit number
+            /// </summary>
+            /// <param name="limitlow">lower limit</param>
+            /// <param name="limithigh">upper limit</param>
+            /// <returns></returns>
             public static int Int32Input(int limitlow, int limithigh)
             {
                 Console.WriteLine("Please enter a number:");
@@ -369,6 +379,55 @@ namespace XenonAquaEngine
                     }
                 }
                 number = int.Parse(input);
+                return number;
+            }
+            /// <summary>
+            /// takes 2 limits and gets the user to return a valid 64 bit number
+            /// </summary>
+            /// <param name="limitlow">lower limit</param>
+            /// <param name="limithigh">upper limit</param>
+            /// <returns></returns>
+            public static Int64 Int64Input(Int64 limitlow, Int64 limithigh)
+            {
+                Console.WriteLine("Please enter a number:");
+                string input;
+                input = Console.ReadLine();
+                bool canparse;
+                Int64 number;
+                canparse = Int64.TryParse(input, out Int64 num);
+                Int64 limithighp = limithigh + 1;
+                Int64 limitlowp = limitlow + 1;
+                if (canparse == true)
+                {
+                    number = Int64.Parse(input);
+                    if (number < limitlowp - 1)
+                    {
+                        canparse = false;
+                    }
+                    if (number > limithighp + 1)
+                    {
+                        canparse = false;
+                    }
+                }
+                while (canparse == false)
+                {
+                    Console.WriteLine("Please enter a valid number:");
+                    input = Console.ReadLine();
+                    canparse = Int64.TryParse(input, out num);
+                    if (canparse == true)
+                    {
+                        number = int.Parse(input);
+                        if (number < limitlowp)
+                        {
+                            canparse = false;
+                        }
+                        if (number > limithighp)
+                        {
+                            canparse = false;
+                        }
+                    }
+                }
+                number = Int64.Parse(input);
                 return number;
             }
         }
