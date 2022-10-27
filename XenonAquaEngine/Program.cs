@@ -5,6 +5,17 @@
         static void Main(string[] args)
         {
             Engine.StartupAndShutdown.Start(2000);
+            while (Engine.ExitGame == false)
+            {
+                switch (Engine.State)
+                {
+                    default:
+                        Engine.Screen.Write("Invalid engine state");
+                        Engine.ExitGame = true;
+                        break;
+                }
+                Engine.SaveSystem.Save();
+            }
         }
     }
 }

@@ -744,8 +744,8 @@ namespace XenonAquaEngine
                 if (Debug.IsDebug)
                 {
                     Console.WriteLine("music thread started");
-                    Debug.Log.WriteAsThread("music thread started");
                 }
+                Debug.Log.WriteAsThread("music thread started");
                 while (true)
                 {
                     if (MusicReader.CurrentTime == SongLength)
