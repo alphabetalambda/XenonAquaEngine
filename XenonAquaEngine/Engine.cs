@@ -156,6 +156,35 @@ namespace XenonAquaEngine
             /// <summary>
             /// the start method that needs to be run to properly initalize the engine
             /// </summary>
+            static public void Start()
+            {
+                System.Threading.Thread.CurrentThread.Name = "Main";
+                foreach (var item in EngineArt)
+                {
+                    Console.WriteLine(item);
+                    System.Threading.Thread.Sleep(5);
+                }
+                Console.WriteLine($"Engine Version: {Engine.EngineVersion}");
+                Console.WriteLine("Audio By Naudio");
+                System.Threading.Thread.Sleep(3000);
+                Console.Write("loading");
+                Debug.Log.Start();
+                Console.Write(".");
+                Debug.Log.WriteAsThread("Logging started");
+                Console.Write(".");
+                Debug.Log.WriteAsThread($"ProcessorID: {System.Threading.Thread.GetCurrentProcessorId()}");
+                Console.Write(".");
+                Engine.Threads.StartMusicThread();
+                Engine.Threads.StartDiscordThread();
+                Engine.SaveSystem.Load();
+                Console.WriteLine(".");
+                Console.WriteLine();
+
+                ReadSpeed = 2000;
+            }
+            /// <summary>
+            /// the start method that needs to be run to properly initalize the engine
+            /// </summary>
             /// <param name="ToReadSpeed">The speed that dialoge lines will be writen at</param>
             static public void Start(int ToReadSpeed)
             {
