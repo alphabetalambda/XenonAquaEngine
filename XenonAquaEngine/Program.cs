@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Engine.StartupAndShutdown.Start(2000);
+            Engine.StartupAndShutdown.Start();
             while (Engine.ExitGame == false)
             {
                 switch (Engine.State)

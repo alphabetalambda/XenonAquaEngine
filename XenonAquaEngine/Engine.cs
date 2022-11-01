@@ -15,7 +15,7 @@ namespace XenonAquaEngine
 {
     public class Engine
     {
-        public static readonly string EngineVersion = "A1.4.0";
+        public static readonly string EngineVersion = "A1.5.0";
         public static readonly string[] EngineArt = { @"___  _ _____ _      ____  _      ____  ____  _     ____ ", @"\  \///  __// \  /|/  _ \/ \  /|/  _ \/  _ \/ \ /\/  _ \", @" \  / |  \  | |\ ||| / \|| |\ ||| / \|| / \|| | ||| / \|", @" /  \ |  /_ | | \||| \_/|| | \||| |-||| \_\|| \_/|| |-||", @"/__/\\\____\\_/  \|\____/\_/  \|\_/ \|\____\\____/\_/ \|" };
         public static readonly string LogFile = $"./{DateTime.Now:MM-dd-yyyy-h-mm-tt}.log";
         public static int ReadSpeed;
