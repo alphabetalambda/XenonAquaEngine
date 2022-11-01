@@ -10,6 +10,7 @@ using NAudio.Codecs;
 using NAudio.FileFormats;
 using NAudio.Midi;
 using NAudio.Mixer;
+using Discord;
 
 namespace XenonAquaEngine
 {
@@ -633,6 +634,21 @@ namespace XenonAquaEngine
         public class Screen
         {
             /// <summary>
+            /// print the credits
+            /// </summary>
+            public static void Credits()
+            {
+                for (int Line = 0; Line < EngineConfig.GameCredits.GetLength(0); Line++)
+                {
+                    for (int columns = 0; columns < EngineConfig.GameCredits.GetLength(1); columns++)
+                    {
+                        Console.Write(EngineConfig.GameCredits[Line, columns]);
+                        Thread.Sleep(10);
+                    }
+                    Console.WriteLine();
+                }
+            }
+            /// <summary>
             /// Prints every string in InArray on a seperate line
             /// </summary>
             /// <param name="InArray">The Array to print</param>
@@ -762,6 +778,9 @@ namespace XenonAquaEngine
             /// name of the song in the sounds directory
             /// </summary>
             public static string SongName = "theme.wav";
+            /// <summary>
+            /// the timespan of the song
+            /// </summary>
             public static System.TimeSpan SongLength = new System.TimeSpan(0,0,59);
             private static WaveOutEvent MusicOut = new WaveOutEvent();
             private static WaveFileReader MusicReader = new WaveFileReader(SoundsFolder + "/" + SongName);
