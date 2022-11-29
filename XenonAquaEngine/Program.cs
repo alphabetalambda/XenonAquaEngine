@@ -16,6 +16,7 @@
                 }
                 Engine.SaveSystem.Save();
             }
+            Engine.Screen.Credits();
             Engine.StartupAndShutdown.Stop();
         }
     }
